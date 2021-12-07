@@ -11,6 +11,7 @@ const Grid = (props) => {
         padding: padding,
         bg:bg,
         justifyContent:justifyContent,
+    
     }
     return (
         <>

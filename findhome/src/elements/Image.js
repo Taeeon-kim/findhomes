@@ -26,11 +26,11 @@ Image.defaultProps = {
 }
 
 const OutBox = styled.div`
-    width: 100%;
+    width: 90%;
     min-width: 250px;
 `
 const InBox= styled.div`
-position: relative; // 상대적인 포지션션
+position: relative; // 상대적인 포지션
 padding-top: 75%; // 75%를 주는 이유는 넓이가 100%이기 때문에 4:3비율을 맟추기 위해
 overflow: hidden; // 이 박스 영역을 벗어나면 숨겨버린다.
 background-image : url("${(props) => props.src}");

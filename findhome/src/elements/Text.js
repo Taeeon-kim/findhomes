@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+
 const Text = (props) => {
 
-const {children, size, color, bold, margin} = props;
- const styles = {size, color, bold, margin}
+const {children, size, color, bold, margin, width} = props;
+ const styles = {size, color, bold, margin, width}
     return (
         <React.Fragment>
             <P {...styles}>{children}</P>
@@ -17,6 +18,7 @@ Text.defaultProps ={
  bold : false, 
  color : "#000000",
  margin : null,
+ width : null,
 }
 
 const P = styled.p`
@@ -24,6 +26,7 @@ const P = styled.p`
     ${(props)=>(`color : ${props.color};`)};
     ${(props)=> (`font-size: ${props.size};`)};
     ${(props)=>(`margin : ${props.margin};`)};
+    ${(props)=>(`width : ${props.width};`)};
 `;
 
 

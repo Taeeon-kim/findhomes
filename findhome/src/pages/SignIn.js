@@ -4,7 +4,14 @@ import Button from "../elements/Button";
 import Text from "../elements/Text";
 import Input from "../elements/Input";
 
+import {useDispatch} from "react-redux"
+import {actionCreators as userActions} from '../redux/modules/user'
+
 const SignIn = (props) => {
+    const dispatch = useDispatch();
+    const login =()=>{
+        dispatch(userActions.loginAction({user_name : 'perl'}))
+    }
   return (
     <React.Fragment>
       <Grid>
@@ -28,7 +35,9 @@ const SignIn = (props) => {
           <Input />
         </Grid>
         <Grid  is_flex margin="20px auto 0px auto" width="250px">
-          <Button border bg = "black" color="white" text="로그인" width="100%" margin="20px auto" height="30px"></Button>
+          <Button border bg = "black" color="white" text="로그인" width="100%" margin="20px auto" height="30px" _onClick={()=>{
+              login();
+          }}></Button>
         </Grid>
         <Grid  is_flex margin="0px auto" width="250px">
           <Button border bg = "black" color="white" text="회원가입" width="100%" margin="20px auto" height="30px"></Button>

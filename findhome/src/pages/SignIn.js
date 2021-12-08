@@ -9,8 +9,11 @@ import {actionCreators as userActions} from '../redux/modules/user'
 
 const SignIn = (props) => {
     const dispatch = useDispatch();
+    const [id, setId] = React.useState("");
+  const [pwd, setPwd] = React.useState("");
     const login =()=>{
-        dispatch(userActions.loginAction({user_name : 'perl'}))
+        // dispatch(userActions.loginAction(id,pwd))
+        dispatch(userActions.loginAction(id,pwd))
     }
   return (
     <React.Fragment>
@@ -26,13 +29,15 @@ const SignIn = (props) => {
           </Text>
           <Input
             _onChange={(e) => {
-              console.log(e.target.value);
+                setId(e.target.value)
             }}
           />
         </Grid>
         <Grid is_flex margin="0px auto" width="230px">
           <Text bold margin="15px 0px">PW:</Text>
-          <Input />
+          <Input _onChange={(e) => {
+                setPwd(e.target.value)
+            }}/>
         </Grid>
         <Grid  is_flex margin="20px auto 0px auto" width="250px">
           <Button border bg = "black" color="white" text="로그인" width="100%" margin="20px auto" height="30px" _onClick={()=>{

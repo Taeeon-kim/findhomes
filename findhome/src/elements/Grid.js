@@ -4,6 +4,8 @@ import styled from "styled-components"
 const Grid = (props) => {
     const {flexWrap,justifyContent,is_flex, width, padding, margin, bg, children} = props
 
+    const {flexWrap, justifyContent,is_flex, width, padding, margin, bg, children, _onClick} = props
+
     const styles = {
         is_flex:is_flex,
         width:width,
@@ -13,10 +15,14 @@ const Grid = (props) => {
         justifyContent:justifyContent,
         flexWrap:flexWrap,
         
+
+        flexWrap: flexWrap,
+   
+
     }
     return (
         <>
-        <GridBox {...styles}>
+        <GridBox {...styles} onClick={_onClick}>
         {children}
         </GridBox>
         </>
@@ -31,7 +37,12 @@ Grid.defaultProps = {
     margin: false,
     bg: false,
     justifyContent: false,
+
     flexWrap:false,
+
+    flexWrap: false,
+    _onClick: ()=>{},
+
 
 }
 

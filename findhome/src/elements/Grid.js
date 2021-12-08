@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components"
 
 const Grid = (props) => {
-    const {justifyContent,is_flex, width, padding, margin, bg, children} = props
+    const {flexWrap, justifyContent,is_flex, width, padding, margin, bg, children, _onClick} = props
 
     const styles = {
         is_flex:is_flex,
@@ -11,10 +11,12 @@ const Grid = (props) => {
         padding: padding,
         bg:bg,
         justifyContent:justifyContent,
+        flexWrap: flexWrap,
+   
     }
     return (
         <>
-        <GridBox {...styles}>
+        <GridBox {...styles} onClick={_onClick}>
         {children}
         </GridBox>
         </>
@@ -29,6 +31,8 @@ Grid.defaultProps = {
     margin: false,
     bg: false,
     justifyContent: false,
+    flexWrap: false,
+    _onClick: ()=>{},
 
 }
 
@@ -41,6 +45,7 @@ ${(props) => (props.margin ? `margin:${props.margin};`:"")}
 ${(props) => (props.bg ? `background-color:${props.bg};`:"")}
 ${(props) => props.is_flex ? `display: flex; align-items: center;`:"" }
 ${(props =>props.justifyContent?`justify-content:${props.justifyContent};`:"")}
+${(props =>props.flexWrap?`flex-wrap:${props.flexWrap};`:"")}
 `
 
 

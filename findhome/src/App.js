@@ -15,9 +15,9 @@ function App() {
     <React.Fragment>
       <Header></Header>
       <ConnectedRouter history ={history} >
-      <Route path="/api/" exact component={PostList} />
-      <Route path="/api/sign-in" exact component={SignIn} />
-      <Route path="/api/sign-up" exact component={SignUp} />
+      <Route path="/" exact component={PostList} />
+      <Route path="/sign-in" exact component={SignIn} />
+      <Route path="/sign-up" exact component={SignUp} />
       
       </ConnectedRouter>
     </React.Fragment>

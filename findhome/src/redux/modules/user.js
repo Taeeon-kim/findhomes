@@ -28,7 +28,7 @@ const loginAction = (id,password) => {
     return function (dispatch, getState, {history}){
         // console.log(history);
        
-        axios.get(`3.38.169.23/api/posts`, {id:id, password:password}, // 서버가 필요로 하는 데이터를 넘겨주고,
+        axios.get(`http://3.38.169.23/api/posts`, {id:id, password:password}, // 서버가 필요로 하는 데이터를 넘겨주고,
         // {headers:{'Authorization': 'GCdu0pku1KRu2SoEyZnlyWPIQNI3'},} // 내가가진토큰도 보내줘서 누가 요청했는 지 알려준다 (config에서 해요)
         ).then(function (response){
             console.log(response);

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from "styled-components"
 
 const Grid = (props) => {
-    const {flexWrap,justifyContent,is_flex, width, padding, margin, bg, children} = props
 
     const {flexWrap, justifyContent,is_flex, width, padding, margin, bg, children, _onClick} = props
 
@@ -14,11 +13,6 @@ const Grid = (props) => {
         bg:bg,
         justifyContent:justifyContent,
         flexWrap:flexWrap,
-        
-
-        flexWrap: flexWrap,
-   
-
     }
     return (
         <>
@@ -37,10 +31,7 @@ Grid.defaultProps = {
     margin: false,
     bg: false,
     justifyContent: false,
-
     flexWrap:false,
-
-    flexWrap: false,
     _onClick: ()=>{},
 
 

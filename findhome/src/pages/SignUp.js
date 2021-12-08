@@ -3,8 +3,19 @@ import Grid from "../elements/Grid";
 import Button from "../elements/Button";
 import Text from "../elements/Text";
 import Input from "../elements/Input";
+import { useDispatch } from "react-redux";
+
 
 const SignUp = (props) => {
+    const dispatch = useDispatch();
+  
+    const [id, setId] = React.useState("");
+    const [pwd, setPwd] = React.useState("");
+    const [pwd_check, setPwdCheck] = React.useState("");
+    const [user_name, setUserName] = React.useState("");
+
+
+
   return (
     <React.Fragment>
       <Grid>
@@ -18,6 +29,12 @@ const SignUp = (props) => {
             ID: 
           </Text>
           <Input placeholder="아이디를 입력해주세요" />
+        </Grid>
+        <Grid is_flex margin="0px auto" width="300px">
+          <Text bold margin="15px 10px" width="61px">
+            닉네임:
+          </Text>
+          <Input placeholder="닉네임을 입력해주세요" />
         </Grid>
         <Grid is_flex margin="0px auto" width="300px">
           <Text bold margin="15px 13px" width="50px">PW:</Text>

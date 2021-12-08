@@ -8,8 +8,8 @@ const SignUp = (props) => {
   return (
     <React.Fragment>
       <Grid>
-        <Grid margin="50px auto" width="200px">
-          <Text bold size="50px"  margin="0px 0px 0px 20px">
+        <Grid margin="50px auto" width="250px">
+          <Text bold size="50px"  margin="0px 0px 0px 40px">
             회원가입
           </Text>
         </Grid>

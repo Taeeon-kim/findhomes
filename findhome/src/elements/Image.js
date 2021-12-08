@@ -27,7 +27,7 @@ Image.defaultProps = {
 
 const OutBox = styled.div`
     width: 90%;
-    min-width: 250px;
+    min-width: 90%;
 `
 const InBox= styled.div`
 position: relative; // 상대적인 포지션

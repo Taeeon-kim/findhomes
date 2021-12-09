@@ -11,7 +11,13 @@ const setPost = createAction(SET_POST,(post_list) => ({post_list}))
 
 // 기본값 지정
 const initialState = {
-    list:[] 
+    list:[ 
+        {   id: "yougnble@aa.com",
+            user_name: "youngble",
+            contents:"test 내용",
+            img_url: ''}
+
+    ] 
 }
 
 const getMainAPI = () => { 

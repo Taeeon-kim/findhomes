@@ -6,8 +6,8 @@ const instance = axios.create({
     baseURL: "http://3.38.169.23",
     headers: {
     "content-type": "application/json;charset=UTF-8",
-    authorization: `Bearer ${localStorage.getItem("token")}`,
-    accept: "application/json",
+    // authorization: `Bearer ${localStorage.setItem("token", response.token)}`,
+    'accept': "application/json",
     // Referer : "http://3.38.169.23"
     },
     });

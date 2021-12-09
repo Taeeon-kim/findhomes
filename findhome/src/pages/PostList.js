@@ -27,7 +27,7 @@ React.useEffect(() =>{
           return (
             <Grid key={p.id}
               _onClick={() => {
-                history.push(`/post-detail/${p.id}`);
+                history.push(`/detail/${p.id}`);
               }}
             >
               <Post  {...p} />
@@ -37,7 +37,7 @@ React.useEffect(() =>{
         })}
         <FloatBtn
           onClick={() => {
-            history.push("/post-write");
+            history.push("/write");
           }}
         >+</FloatBtn>
       </Grid>

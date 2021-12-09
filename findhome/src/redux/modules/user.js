@@ -1,7 +1,7 @@
 import {createAction, handleActions} from "redux-actions";  //액션을 편하게 만들어주는것, reducer을 편하게 만들어주는것(switch case 없이)
 import { produce } from "immer";  //불변성을 위해 produce 가져옴
 import { setCookie, deleteCookie, getCookie } from "../../Cookie";
-// import axios from "axios";
+import axios from "axios";
 import instance from "../../axios"
 
 //actions
@@ -28,10 +28,24 @@ const initialState ={
 const loginAction = (id,password) => {
     return function (dispatch, getState, {history}){
         // console.log(history);
-      
-        instance.post(`/api/posts`, {id:id, password:password}).then(function (response){    // 서버가 필요로 하는 데이터를 넘겨주고,
-            console.log(response);
-            
+//         axios.get(`http://3.38.169.23/api/posts`, {id:id, password:password}, // 서버가 필요로 하는 데이터를 넘겨주고,
+//         {headers:{"content-type": "applicaton/json;charset=UTF-8",
+//         accept: "application/json",
+//         // Authorization: `bearer ${getCookie("user")}`
+//     }, // 내가가진토큰도 보내줘서 누가 요청했는 지 알려준다 (config에서 해요)
+//  withCredentials: true,
+// } 
+        instance.post(`/api/sign-in`, {id:id, password:password}).then(function (response){    // 서버가 필요로 하는 데이터를 넘겨주고,
+            console.log(response.data);
+        
+          localStorage.setItem("token", response.data.token);
+          const TOKEN  = localStorage.getItem("token");
+          console.log(TOKEN);
+           instance.get(`/api/users/me`,{headers:{
+            'authorization' : `Bearer ${TOKEN}`}}).then(function(response){
+               console.log(response.data.users)
+           })
+           
         dispatch(logIn({user_name: id, user_profile: '', id:id, uid: "dfhef"}));
         history.push('/');
         }).catch(function (error) {

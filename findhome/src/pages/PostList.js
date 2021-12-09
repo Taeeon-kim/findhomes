@@ -6,7 +6,7 @@ import Grid from "../elements/Grid";
 import Button from "../elements/Button";
 import Input from "../elements/Input";
 import Text from "../elements/Text";
-
+import {actionCreators as postActions} from '../redux/modules/post';
 import Post from "../components/Post";
 
 const PostList = (props) => {
@@ -15,17 +15,22 @@ const PostList = (props) => {
   const postList = useSelector((state) => state.post.list); // state는 리덕스 스토어의 전체 데이터
   // console.log(user_list);
   // console.log(postList)
+
+React.useEffect(() =>{
+        dispatch(postActions.getMainAPI());
+},[])
+
   return (
     <>
       <Grid is_flex margin="0px" flexWrap="wrap">
         {postList.map((p, idx) => {
           return (
-            <Grid
+            <Grid key={p.id}
               _onClick={() => {
                 history.push(`/post-detail/${p.id}`);
               }}
             >
-              <Post key={p.id} {...p} />
+              <Post  {...p} />
             </Grid>
           ); // map을 돌려줌으로 key값 필요
           // {...p}에는 게시글의 모든 정보가 들어감

@@ -52,8 +52,16 @@ const getMainAPI = () => {
         //     dispatch(setPost(post_list))
 
         // })
-        console.log(initialState.list)
-        dispatch(setPost(initialState.list))
+        // console.log(initialState.list)
+        // const a = [...initialState.list,{id: "yougnble@aa.com",
+        // user_name: "youngble",
+        // contents:"test 내용",
+        // img_url: 'https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png'}]
+        // console.log(a);
+
+
+
+        // dispatch(setPost(initialState.list)) //나중에 필요 
         
 
 }

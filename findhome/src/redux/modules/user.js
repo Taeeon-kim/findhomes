@@ -1,7 +1,8 @@
 import {createAction, handleActions} from "redux-actions";  //액션을 편하게 만들어주는것, reducer을 편하게 만들어주는것(switch case 없이)
 import { produce } from "immer";  //불변성을 위해 produce 가져옴
-import { setCookie, deleteCookie } from "../../Cookie";
-import axios from "axios";
+import { setCookie, deleteCookie, getCookie } from "../../Cookie";
+// import axios from "axios";
+import instance from "../../axios"
 
 //actions
 const LOG_IN = "LOG_IN";
@@ -27,9 +28,8 @@ const initialState ={
 const loginAction = (id,password) => {
     return function (dispatch, getState, {history}){
         // console.log(history);
-       
-        axios.get(`3.38.169.23/api/posts`, {id:id, password:password}, // 서버가 필요로 하는 데이터를 넘겨주고,
-        // {headers:{'Authorization': 'GCdu0pku1KRu2SoEyZnlyWPIQNI3'},} // 내가가진토큰도 보내줘서 누가 요청했는 지 알려준다 (config에서 해요)
+      
+        instance.post(`/api/posts`, {id:id, password:password}, // 서버가 필요로 하는 데이터를 넘겨주고,
         ).then(function (response){
             console.log(response);
             

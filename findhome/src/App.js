@@ -21,6 +21,7 @@ function App() {
       <Route path="/sign-up" exact component={SignUp} />
       <Route path="/postwrite" exact component={PostWrite} />
       
+      
       </ConnectedRouter>
     </React.Fragment>
   );

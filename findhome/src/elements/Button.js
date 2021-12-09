@@ -25,7 +25,7 @@ Button.defaultProps = {
         width: null,
         height: "",
         bg : "#444444",
-        color: "ffffff",
+        color: "#FFFFFF",
         border: false, 
 
 }

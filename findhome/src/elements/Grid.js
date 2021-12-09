@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const Grid = (props) => {
 
-    const {flexWrap, justifyContent,is_flex, width, padding, margin, bg, children, _onClick} = props
+    const {border,flexDirection,flexWrap, justifyContent,is_flex, width, padding, margin, bg, children, _onClick} = props
 
     const styles = {
         is_flex:is_flex,
@@ -13,6 +13,8 @@ const Grid = (props) => {
         bg:bg,
         justifyContent:justifyContent,
         flexWrap:flexWrap,
+        flexDirection:flexDirection,
+        border:border,
     }
 
     return (
@@ -34,6 +36,8 @@ Grid.defaultProps = {
     justifyContent: false,
     flexWrap: false,
     _onClick: ()=>{},
+    flexDirection: false,
+    border:false,
 }
 
 const GridBox = styled.div`
@@ -46,6 +50,8 @@ ${(props) => (props.bg ? `background-colosr:${props.bg};`:"")}
 ${(props) => props.is_flex ? `display: flex; align-items: center;`:"" }
 ${(props =>props.justifyContent?`justify-content:${props.justifyContent};`:"")}
 ${(props =>props.flexWrap?`flex-wrap:${props.flexWrap};`:"")}
+${(props =>props.flexDirection?`flex-direction:${props.flexDirection};`:"")}
+${(props =>props.border?`border:${props.border};`:"")}
 `
 
 

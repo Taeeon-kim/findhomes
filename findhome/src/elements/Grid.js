@@ -14,6 +14,7 @@ const Grid = (props) => {
         justifyContent:justifyContent,
         flexWrap:flexWrap,
     }
+
     return (
         <>
         <GridBox {...styles} onClick={_onClick}>
@@ -31,7 +32,7 @@ Grid.defaultProps = {
     margin: false,
     bg: false,
     justifyContent: false,
-    flexWrap:false,
+    flexWrap: false,
     _onClick: ()=>{},
 }
 

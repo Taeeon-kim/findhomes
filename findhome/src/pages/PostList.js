@@ -36,8 +36,8 @@ React.useEffect(() =>{
           // {...p}에는 게시글의 모든 정보가 들어감
         })}
         <FloatBtn
-          _onClick={() => {
-            history.push("post-write");
+          onClick={() => {
+            history.push("/post-write");
           }}
         >+</FloatBtn>
       </Grid>

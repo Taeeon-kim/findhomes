@@ -14,7 +14,7 @@ const PostList = (props) => {
   const dispatch = useDispatch();
   const postList = useSelector((state) => state.post.list); // state는 리덕스 스토어의 전체 데이터
   // console.log(user_list);
-  // console.log(postList)
+//   console.log(postList)
 
 React.useEffect(() =>{
         dispatch(postActions.getMainAPI());

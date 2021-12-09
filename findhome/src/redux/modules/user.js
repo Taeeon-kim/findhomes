@@ -18,7 +18,7 @@ const getUser = createAction(GET_USER, (user)=>({user}))
 
 //initial State
 const initialState ={
-    user: null,
+    user: 'youngble',
     is_login: false,
 
 }
@@ -29,8 +29,7 @@ const loginAction = (id,password) => {
     return function (dispatch, getState, {history}){
         // console.log(history);
       
-        instance.post(`/api/posts`, {id:id, password:password}, // 서버가 필요로 하는 데이터를 넘겨주고,
-        ).then(function (response){
+        instance.post(`/api/posts`, {id:id, password:password}).then(function (response){    // 서버가 필요로 하는 데이터를 넘겨주고,
             console.log(response);
             
         dispatch(logIn({user_name: id, user_profile: '', id:id, uid: "dfhef"}));

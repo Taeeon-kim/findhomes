@@ -10,6 +10,7 @@ import SignUp from './pages/SignUp';
 import PostList from './pages/PostList';
 import Header from './components/Header';
 import PostWrite from './pages/PostWrite';
+import Detail from './pages/PostDetail';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/sign-in" exact component={SignIn} />
       <Route path="/sign-up" exact component={SignUp} />
       <Route path="/postwrite" exact component={PostWrite} />
+      <Route path="/post-detail:id" exact component={Detail} />
       
       
       </ConnectedRouter>

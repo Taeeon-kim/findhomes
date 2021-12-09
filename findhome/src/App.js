@@ -20,7 +20,7 @@ function App() {
       <Route path="/" exact component={PostList} />
       <Route path="/sign-in" exact component={SignIn} />
       <Route path="/sign-up" exact component={SignUp} />
-      <Route path="/postwrite" exact component={PostWrite} />
+      <Route path="/post-write" exact component={PostWrite} />
       <Route path="/post-detail:id" exact component={Detail} />
       
       

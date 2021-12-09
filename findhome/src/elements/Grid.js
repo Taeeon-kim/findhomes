@@ -33,8 +33,6 @@ Grid.defaultProps = {
     justifyContent: false,
     flexWrap:false,
     _onClick: ()=>{},
-
-
 }
 
 const GridBox = styled.div`

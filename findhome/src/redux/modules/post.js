@@ -2,53 +2,70 @@ import {createAction,handleActions} from "redux-actions"
 import produce from "immer" 
 import axios from "axios"
 import instance from "../../axios"
-import { history } from "../configureStore"
 import moment from "moment"
 
 
 // 액션 타입 지정
 const SET_POST = 'SET_POST'
-const ADD_POST ="SET_POST"
+const ADD_POST = 'ADD_POST'
 
 // 액션 생성 함수
 const setPost = createAction(SET_POST,(post_list) => ({post_list}))
-const addPost = createAction(ADD_POST,(post_list) => ({post_list}))
+const addPost = createAction(ADD_POST,(post) => ({post}))
 
 // 기본값 지정
 const initialState = {
     list:[] 
 }
 
-const initialPost = {
-    id :0,
-    title: '초기값1',
+const initalPost = {
+    _id :null,
+    user_name:"석준",
+    contents:"내용",
     img_url:"https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
-    userId:"초기값2",
-    content: "초기값3",
-    area:"초기값4",
-    _id:"몰라",
-    nickname:"석준",
-    date: moment().format('YYYY-MM-DD hh:mm:ss'),
+    post_date: moment().format('YYYY-MM-DD hh:mm:ss'),
+    title:"내용2",
+    uid: "키값",
+    userId:"값",
+    area: "지역"
+} 
+
+
+const addPostDB = (title, content) => {
+    return function (dispatch,getState,{history}) {
+    
+        
+        const _post = {
+            ...initalPost,
+            contents:content,
+            title:title,
+            post_date: moment().format('YYYY-MM-DD hh:mm:ss') // 만들어지는 시점 생각
+            
+        }
+        console.log(_post)
+   
+            instance.post(`/api/posts`, {..._post}).then(function (response){
+                const add = {
+                    ..._post, id: response.id
+
+                }
+                    // 서버가 필요로 하는 데이터를 넘겨주고,
+                console.log(add);
+
+            const TOKEN = localStorage.getItem("token");
+            console.log(TOKEN);
+            instance
+              .get(`/api/users/me`, {
+                headers: {
+                  authorization: `Bearer ${TOKEN}`,
+                },
+              })
+    })
+    
+        
+    }
 
 }
-
-const addPosthc = (title = "",content ="") => {
-    return function (dispatch, getState, {history}){
-
-
-        const add = {
-            ...initialPost,
-            title:title,
-            content:content,
-            date: moment().format('YYYY-MM-DD hh:mm:ss'),
-             
-        }
-        console.log({...add})
-            
-
-        instance.post(`/api/posts`, {...add}).then(function (response){ // 서버가 필요로 하는 데이터를 넘겨주고,
-            console.log(response.data);
-})
 
 const getMainAPI = () => { 
     return function (dispatch,getState,{history}){
@@ -65,6 +82,7 @@ const getMainAPI = () => {
                 //     id:fitpost.id,
                 //     ...fitpost.data() 
                 // }
+                
                 let post = {
                     _id:_post.postId,
                     user_name:_post.nickname,
@@ -75,6 +93,7 @@ const getMainAPI = () => {
                     uid:_post._id,
                     userId:_post.userId,
                     area:_post.area,
+
                 }
                 
 
@@ -96,21 +115,22 @@ const getMainAPI = () => {
 
 
         // dispatch(setPost(initialState.list)) //나중에 필요 
-        }
-            )
-    }
+        
+}
+            )}
 }
 
 
 
 // 리듀서
-    export default handleActions(
+export default handleActions(
     {
         [SET_POST] : (state,action) => produce(state,(draft) => {
-            draft.list = action.payload.post_list // 리스트를 초기값에서 갈아끼우기
-        }),
+            draft.list = action.payload.post_list 
+        }),// 리스트를 초기값에서 갈아끼우기
         [ADD_POST] : (state,action) => produce(state,(draft) => {
-            draft.list = action.payload.post 
+                draft.list = action.payload.post
+                console.log(draft.list)
         })
 
     }
@@ -120,6 +140,8 @@ const getMainAPI = () => {
 const actionCreators = {
     setPost,
     getMainAPI,
-    addPosthc,
+    addPostDB,
+    addPost,
 }
+
 export {actionCreators}

@@ -34,7 +34,7 @@ const getMainAPI = () => {
                 let post = {
                     _id:_post.postId,
                     user_name:_post.nickname,
-                    contents:_post.content,
+                    content:_post.content,
                     img_url:_post.img_url,
                     post_date: _post.date,
                     title: _post.title,
@@ -56,7 +56,7 @@ const getMainAPI = () => {
         // console.log(initialState.list)
         // const a = [...initialState.list,{id: "yougnble@aa.com",
         // user_name: "youngble",
-        // contents:"test 내용",
+        // content:"test 내용",
         // img_url: 'https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png'}]
         // console.log(a);
 

@@ -23,7 +23,7 @@ const Post = (props) => {
                     <Image src = {props.img_url}/>
                 </Grid>
                 <Grid is_flex width = 'auto' >
-                    <Text size = '200%' margin = '5%'>{props.contents}</Text>
+                    <Text size = '200%' margin = '5%'>{props.content}</Text>
 
                 </Grid>
                 <Grid is_flex padding = '1% 5%'>
@@ -39,7 +39,7 @@ const Post = (props) => {
 Post.defaultProps = {
     
         user_name:"작성자",
-        contents:"간단한 소개글입니다.",
+        content:"간단한 소개글입니다.",
         img_url: "https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
         post_date:"2021-11-29 11:00:00",
         comment_cnt: 10,

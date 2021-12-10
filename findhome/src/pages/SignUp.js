@@ -5,7 +5,7 @@ import Text from "../elements/Text";
 import Input from "../elements/Input";
 import { useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
-import {emailCheck, passwordCheck} from '../shared/common'
+import {idCheck, passwordCheck} from '../shared/common'
 
 const SignUp = (props) => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const SignUp = (props) => {
       return;
     }
 
-    if (!emailCheck(id)) {
+    if (!idCheck(id)) {
       window.alert("이메일 형식이 맞지 않습니다!");
       return;
     }
@@ -34,7 +34,7 @@ const SignUp = (props) => {
       return;
     }
 
-    dispatch(userActions.loginAction(id, pwd, user_name))
+    dispatch(userActions.signupAction(id, pwd, pwd_check, user_name))
   };
 
   return (
@@ -70,7 +70,7 @@ const SignUp = (props) => {
           />
         </Grid>
         <Grid is_flex margin="0px auto" width="300px">
-          <Text bold margin="15px 13px" width="50px">
+          <Text bold margin="15px 13px" width="50px" >
             PW:
           </Text>
           <Input
@@ -79,6 +79,7 @@ const SignUp = (props) => {
               setPwd(e.target.value);
               //  console.log(pwd)
             }}
+            type="password"
           />
         </Grid>
         <Grid is_flex margin="0px auto" width="300px">
@@ -89,8 +90,8 @@ const SignUp = (props) => {
             placeholder="비밀번호를 한번더 확인해주세요"
             _onChange={(e) => {
               setPwdCheck(e.target.value);
-              //  console.log(pwd_check)
             }}
+            type="password"
           />
         </Grid>
         <Grid is_flex margin="20px auto 0px auto" width="300px">

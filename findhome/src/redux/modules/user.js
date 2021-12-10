@@ -3,11 +3,13 @@ import { produce } from "immer"; //불변성을 위해 produce 가져옴
 import { setCookie, deleteCookie, getCookie } from "../../Cookie";
 import axios from "axios";
 import instance from "../../axios";
+import { passwordCheck } from "../../shared/common";
 
 //actions
 const LOG_IN = "LOG_IN";
 const LOG_OUT = "LOG_OUT";
 const GET_USER = "GET_USER";
+const SIGN_UP = "SIGN_UP"
 
 //action creators
 //여기서 createAction 을 이용해서 만든다.
@@ -15,6 +17,7 @@ const GET_USER = "GET_USER";
 const logIn = createAction(LOG_IN, (user) => ({ user })); //첫번째 인자로 액션타입을 넘겨주고 화살표함수로 우리가 쓰고 가져올 데이터를 넣어줌
 const logOut = createAction(LOG_OUT, (user) => ({ user }));
 const getUser = createAction(GET_USER, (user) => ({ user }));
+// const signUp = createAction(SIGN_UP, (user)=>({user}));
 
 //initial State
 const initialState = {
@@ -60,11 +63,13 @@ const loginAction = (id, password) => {
                 uid: users.userId,
               })
             );
+            window.alert(`${users.nickname}님 환영합니다.`);
             history.push("/");
           });
       })
       .catch(function (error) {
         console.log(error);
+        window.alert(`비밀번호 또는 아이디를 다시 확인해주세요.`);
       });
   };
 };
@@ -73,15 +78,33 @@ const logoutAction = () => {
   return function (dispatch, getState, { history }) {
     localStorage.removeItem("token");
     dispatch(logOut());
+    window.alert(`나중에 또 집보러오세요:)`);
     history.replace("/");
   };
 };
 
+const signupAction = (id, password, password_confirm, nickname) => {
+    return function (dispatch, getState, {history}) {
+//  console.log(id, password, password_confirm,nickname);
+  instance.post("/api/sign-up",{
+      id,
+     password,
+    password_confirm,
+      nickname
+  }).then(function (response){
+      window.alert('가입을 축하드립니다.');
+    //   console.log(response);
+    //   dispatch(signUp({id, password, password_confirm, nickname}))
+      history.push("/sign-in");
+  })
+
+ 
+    }
+}
+
 export default handleActions(
   {
-    [LOG_IN]: (
-      state,
-      action //state가 있을거고 받아온 action 값이 있을것이다 그걸 가져와 쓰기위해 넘겨줌
+    [LOG_IN]: ( state, action //state가 있을거고 받아온 action 값이 있을것이다 그걸 가져와 쓰기위해 넘겨줌
     ) =>
       produce(state, (draft) => {
         //immer 라는건 A 를 불변성을 유지하면서 값을 바꿀때 알아서 불변성 유지해줌. state 원본값을 draft로 복사해줘서 넘겨준다.
@@ -98,6 +121,7 @@ export default handleActions(
         draft.is_login = false;
       }),
     [GET_USER]: (state, action) => produce(state, (draft) => {}),
+    // [SIGN_UP] : (state, action) => produce(state, (draft)=> {}),  
   },
 
   initialState
@@ -112,6 +136,7 @@ const actionCreators = {
   getUser,
   loginAction,
   logoutAction,
+  signupAction
 };
 
 export { actionCreators };

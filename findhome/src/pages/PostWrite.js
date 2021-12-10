@@ -16,6 +16,7 @@ const PostWrite = (props) => {
   const [content, setContents] = React.useState("");
   const [area, setArea] = React.useState("");
 
+
   const textTitle = (e) => {
     setTitle(e.target.value);
   };

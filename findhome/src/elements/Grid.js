@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const Grid = (props) => {
 
-    const {border,flexDirection,flexWrap, justifyContent,is_flex, width, padding, margin, bg, children, _onClick} = props
+    const {is_btn,border,flexDirection,flexWrap, justifyContent,is_flex, width, padding, margin, bg, children, _onClick} = props
 
     const styles = {
         is_flex:is_flex,
@@ -15,6 +15,7 @@ const Grid = (props) => {
         flexWrap:flexWrap,
         flexDirection:flexDirection,
         border:border,
+        is_btn:is_btn,
     }
 
     return (
@@ -38,6 +39,7 @@ Grid.defaultProps = {
     _onClick: ()=>{},
     flexDirection: false,
     border:false,
+    is_btn:false,
 }
 
 const GridBox = styled.div`
@@ -51,7 +53,10 @@ ${(props) => props.is_flex ? `display: flex; align-items: center;`:"" }
 ${(props =>props.justifyContent?`justify-content:${props.justifyContent};`:"")}
 ${(props =>props.flexWrap?`flex-wrap:${props.flexWrap};`:"")}
 ${(props =>props.flexDirection?`flex-direction:${props.flexDirection};`:"")}
-${(props =>props.border?`border:${props.border};`:"")}
+${(props =>props.border?`border:${props.border};`:"")}\
+${(props =>props.is_btn?`float: left; background-color:#ccc;
+border-radius:20px; box-shadow:3px 3px 3px black; transition-duration 0.3s; &:active{margin-left:15px; margin-top:15px; box-shadow:none;}` :"")}
+
 `
 
 

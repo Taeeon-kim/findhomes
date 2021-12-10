@@ -21,11 +21,11 @@ React.useEffect(() =>{
 },[])
 
   return (
-    <>
-      <Grid is_flex margin="0px" flexWrap="wrap">
+    
+      <Grid is_flex margin="0px" flexWrap="wrap" >
         {postList.map((p, idx) => {
           return (
-            <Grid key={p.id}
+            <Grid  width = "33%"is_flex key={p.id}
               _onClick={() => {
                 history.push(`/detail/${p.id}`);
               }}
@@ -41,7 +41,7 @@ React.useEffect(() =>{
           }}
         >+</FloatBtn>
       </Grid>
-    </>
+  
   );
 };
 

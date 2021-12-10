@@ -10,7 +10,7 @@ import Image from '../elements/Image';
 const Post = (props) => {
     return(
         <>
-        <Grid margin = "2% 0%" bg = 'gray'width ="33%">
+        <Grid margin = "2% 0%" bg = 'gray'>
             <Grid is_flex justifyContent='space-between' width = '100%' >
                 <Text size = '120%' margin = '0% 5%'>{props.user_name}</Text>
                 <Text size = '120%' margin = '0% 5%'>{props.post_date}</Text>

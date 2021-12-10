@@ -2,13 +2,16 @@ import {createAction,handleActions} from "redux-actions"
 import produce from "immer" 
 import axios from "axios"
 import instance from "../../axios"
+import { history } from "../configureStore"
 
 
 // 액션 타입 지정
 const SET_POST = 'SET_POST'
+const ADD_POST = 'ADD_POST'
 
 // 액션 생성 함수
 const setPost = createAction(SET_POST,(post_list) => ({post_list}))
+const addPost = createAction(ADD_POST,(post) =>({post}))
 
 // 기본값 지정
 const initialState = {
@@ -16,10 +19,23 @@ const initialState = {
         {   id: "yougnble@aa.com",
             user_name: "youngble",
             contents:"test 내용",
-            img_url: 'https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png'}
-
+            img_url: 'https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png',
+            title:"",
+    }
+        
     ] 
 }
+
+const addPosthc = (title,content) => {
+    return function (dispatch, getState, {history}){
+
+        instance.get(`/api/posts`, {title:title, content:content}).then(function (response){    // 서버가 필요로 하는 데이터를 넘겨주고,
+            console.log(response.data);
+})
+}
+}
+    
+
 
 const getMainAPI = () => { 
     return function (dispatch,getState,{history}){
@@ -52,20 +68,21 @@ const getMainAPI = () => {
 
             dispatch(setPost(post_list))
 
-        // })
-        // console.log(initialState.list)
-        // const a = [...initialState.list,{id: "yougnble@aa.com",
-        // user_name: "youngble",
-        // contents:"test 내용",
-        // img_url: 'https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png'}]
-        // console.log(a);
+        })
+//         console.log(initialState.list)
+//         const a = [...initialState.list,{id: "yougnble@aa.com",
+//         user_name: "youngble",
+//         contents:"test 내용",
+//         img_url: 'https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png'}]
+//         console.log(a);
 
 
 
-        // dispatch(setPost(initialState.list)) //나중에 필요 
+//         dispatch(setPost(initialState.list)) //나중에 필요 
         
-}
-            )}
+// }
+//             )}
+    }
 }
 
 
@@ -75,6 +92,9 @@ export default handleActions(
     {
         [SET_POST] : (state,action) => produce(state,(draft) => {
             draft.list = action.payload.post_list // 리스트를 초기값에서 갈아끼우기
+        }),
+        [ADD_POST] : (state,action) => produce(state,(draft) => {
+            draft.list = action.payload.post 
         })
 
     }
@@ -83,7 +103,9 @@ export default handleActions(
 // 액션생성자 내보냄
 const actionCreators = {
     setPost,
-    getMainAPI
+    getMainAPI,
+    addPost,
+    addPosthc
 }
 
 export {actionCreators}

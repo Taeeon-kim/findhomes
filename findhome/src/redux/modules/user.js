@@ -44,10 +44,12 @@ const loginAction = (id,password) => {
            instance.get(`/api/users/me`,{headers:{
             'authorization' : `Bearer ${TOKEN}`}}).then(function(response){
                console.log(response.data.users)
+               const users = response.data.users
+               dispatch(logIn({user_name: users.nickname , user_profile: '', id:users.id, uid: users.userId}));
+               history.push('/');
            })
            
-        dispatch(logIn({user_name: id, user_profile: '', id:id, uid: "dfhef"}));
-        history.push('/');
+
         }).catch(function (error) {
             console.log(error);
           });

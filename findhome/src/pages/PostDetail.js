@@ -27,7 +27,7 @@ const PostDetail = (props) => {
         ) : (
           <Post {...post}></Post>
         )
-      ) : null}
+      ) :null}
     </React.Fragment>
   );
 };

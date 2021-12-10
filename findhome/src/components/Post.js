@@ -23,7 +23,7 @@ const Post = (props) => {
                     <Image src = {props.img_url}/>
                 </Grid>
                 <Grid is_flex width = 'auto' >
-                    <Text size = '200%' margin = '5%'>{props.contents}</Text>
+                    <Text size = '200%' margin = '5%'>{props.content}</Text>
 
                 </Grid>
                 <Grid is_flex padding = '1% 5%'>

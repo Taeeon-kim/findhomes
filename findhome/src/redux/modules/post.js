@@ -21,7 +21,7 @@ const initialState = {
 const initalPost = {
     _id :null,
     user_name:"석준",
-    contents:"내용",
+    content:"내용",
     img_url:"https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
     post_date: moment().format('YYYY-MM-DD hh:mm:ss'),
     title:"내용2",
@@ -33,39 +33,39 @@ const initalPost = {
 
 const addPostDB = (title, content) => {
     return function (dispatch,getState,{history}) {
-    
         
         const _post = {
             ...initalPost,
-            contents:content,
+            content:content,
             title:title,
             post_date: moment().format('YYYY-MM-DD hh:mm:ss') // 만들어지는 시점 생각
             
         }
         console.log(_post)
+
+        const TOKEN = localStorage.getItem("token");
+        console.log(TOKEN);
    
-            instance.post(`/api/posts`, {..._post}).then(function (response){
-                const add = {
-                    ..._post, id: response.id
+            instance.get(`/api/posts`, {title:_post.title,content:_post.content,id:_post._id,date:_post.post_date,nickname:_post.user_name,area:_post.area}, {headers: {
+                authorization: `Bearer ${TOKEN}`,
+              }}).then(function (response){
+
+                  console.log(response.data)
+                // const add = {
+                //     ..._post, id: response.id
 
                 }
                     // 서버가 필요로 하는 데이터를 넘겨주고,
-                console.log(add);
-
-            const TOKEN = localStorage.getItem("token");
-            console.log(TOKEN);
-            instance
-              .get(`/api/users/me`, {
-                headers: {
-                  authorization: `Bearer ${TOKEN}`,
-                },
-              })
-    })
+                // console.log(add);
+              ).catch(function (error) {
+                console.log(error);
+                window.alert(`비밀번호 또는 아이디를 다시 확인해주세요.`);
+              });
+        
+    }
     
         
     }
-
-}
 
 const getMainAPI = () => { 
     return function (dispatch,getState,{history}){
@@ -86,7 +86,7 @@ const getMainAPI = () => {
                 let post = {
                     _id:_post.postId,
                     user_name:_post.nickname,
-                    contents:_post.content,
+                    content:_post.content,
                     img_url:_post.img_url,
                     post_date: _post.date,
                     title: _post.title,
@@ -108,7 +108,7 @@ const getMainAPI = () => {
         // console.log(initialState.list)
         // const a = [...initialState.list,{id: "yougnble@aa.com",
         // user_name: "youngble",
-        // contents:"test 내용",
+        // content:"test 내용",
         // img_url: 'https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png'}]
         // console.log(a);
 

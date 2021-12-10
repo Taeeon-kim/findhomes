@@ -27,7 +27,7 @@ const PostWrite = (props) => {
     //     title:title,
     //     contents:contents
     // }
-    // console.log()
+    console.log("ddfc")
     dispatch(postActions.addPostDB(title, contents));
   };
 

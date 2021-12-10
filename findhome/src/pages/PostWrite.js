@@ -79,7 +79,7 @@ const PostWrite = (props) => {
               게시글 등록
             </Text>
           </Button>
-          <Button width="7%" margin="15px 5%" height="65px">
+          <Button width="7%" margin="15px 5%" height="65px" _onClick={()=>history.push('/')}> 
             <Text size="20px" color="white">
               취소하기
             </Text>

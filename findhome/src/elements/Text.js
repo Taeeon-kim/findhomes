@@ -4,10 +4,11 @@ import styled from "styled-components";
 
 const Text = (props) => {
 
-const {children, size, color, bold, margin, width} = props;
+const {children, size, color, bold, margin, width, label} = props;
  const styles = {size, color, bold, margin, width}
     return (
         <React.Fragment>
+            {label&&<Text margin="0px" bold>{label}</Text>}
             <P {...styles}>{children}</P>
         </React.Fragment>
     )

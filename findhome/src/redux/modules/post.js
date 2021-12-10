@@ -58,7 +58,7 @@ const addPostDB = (title, content, area) => {
                 content:_post.content,
                 date:_post.post_date,
                 area:_post.area,
-                img_url: "https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
+                // img_url: "https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
             }, { headers: {
                 "authorization" : `Bearer ${TOKEN}`
               }, }).then(function (response){

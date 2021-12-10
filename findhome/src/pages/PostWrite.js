@@ -13,22 +13,27 @@ import Image from "../elements/Image";
 const PostWrite = (props) => {
   const dispatch = useDispatch();
   const [title, setTitle] = React.useState("");
-  const [contents, setContents] = React.useState("");
+  const [content, setContents] = React.useState("");
+  const [area, setArea] = React.useState("");
 
-  const texTtitle = (e) => {
+  const textTitle = (e) => {
     setTitle(e.target.value);
   };
   const textContents = (e) => {
     setContents(e.target.value);
   };
+  const textArea = (e) => {
+    setArea(e.target.value);
+    console.log(e.target.value);
+  };
 
   const addPost = () => {
     // let post = {
     //     title:title,
-    //     contents:content
+    //     content:content
     // }
     console.log("ddfc")
-    dispatch(postActions.addPostDB(title, content));
+    dispatch(postActions.addPostDB(title, content, area));
   };
 
   return (
@@ -52,10 +57,15 @@ const PostWrite = (props) => {
             <Image />
           </Grid>
           <Grid is flex width="45%" margin="0% 5%">
+          
+            <Text bold size="25px">
+              area
+            </Text>
+            <Input _onChange={textArea} width="20%"></Input>
             <Text bold size="25px">
               title
             </Text>
-            <TextArea onChange={texTtitle} rows={2}></TextArea>
+            <TextArea onChange={textTitle} rows={2}></TextArea>
             <Text bold size="25px">
               content
             </Text>

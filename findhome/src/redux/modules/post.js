@@ -19,38 +19,51 @@ const initialState = {
 }
 
 const initalPost = {
-    _id :null,
-    user_name:"석준",
-    content:"내용",
-    img_url:"https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
-    post_date: moment().format('YYYY-MM-DD hh:mm:ss'),
-    title:"내용2",
-    uid: "키값",
-    userId:"값",
-    area: "지역"
+   
+    
+    content:"",
+    // img_url:"https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
+    post_date: moment().format('YYYY-MM-DD'),
+    title:"",
+    // uid: "키값",
+    // userId:"값",
+    area: ""
 } 
 
 
-const addPostDB = (title, content) => {
+const addPostDB = (title, content, area) => {
     return function (dispatch,getState,{history}) {
-        
+        const _user = getState().user.user; // getState스토어에있는 정보가져옴
+    console.log(_user);
+    
+    const user_info = {
+      nickname: _user.user_name,
+      id: _user.id,
+    };
         const _post = {
             ...initalPost,
             content:content,
             title:title,
-            post_date: moment().format('YYYY-MM-DD hh:mm:ss') // 만들어지는 시점 생각
-            
+            post_date: moment().format('YYYY-MM-DD hh:mm:ss'), // 만들어지는 시점 생각
+            area:area
         }
         console.log(_post)
 
         const TOKEN = localStorage.getItem("token");
         console.log(TOKEN);
    
-            instance.get(`/api/posts`, {title:_post.title,content:_post.content,id:_post._id,date:_post.post_date,nickname:_post.user_name,area:_post.area}, {headers: {
-                authorization: `Bearer ${TOKEN}`,
-              }}).then(function (response){
+            instance.post(`/api/posts`, {
 
-                  console.log(response.data)
+                title:_post.title,
+                content:_post.content,
+                date:_post.post_date,
+                area:_post.area,
+                img_url: "https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
+            }, { headers: {
+                "authorization" : `Bearer ${TOKEN}`
+              }, }).then(function (response){
+                window.alert("Ddddd");
+                  console.log(response)
                 // const add = {
                 //     ..._post, id: response.id
 

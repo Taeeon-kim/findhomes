@@ -25,10 +25,10 @@ const PostWrite = (props) => {
   const addPost = () => {
     // let post = {
     //     title:title,
-    //     contents:contents
+    //     contents:content
     // }
-    // console.log()
-    dispatch(postActions.addPosthc(title, contents));
+    console.log("ddfc")
+    dispatch(postActions.addPostDB(title, content));
   };
 
   return (

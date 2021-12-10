@@ -24,7 +24,6 @@ function App() {
       <Route path="/detail/:uid" exact component={PostDetail} />
       <Route path="/write/:uid" exact component={PostWrite} />
       
-      
       </ConnectedRouter>
     </React.Fragment>
   );

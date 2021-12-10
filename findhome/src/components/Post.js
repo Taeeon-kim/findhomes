@@ -6,7 +6,7 @@ import Button from '../elements/Button'
 import Input from '../elements/Input'
 import Text from '../elements/Text'
 import Image from '../elements/Image';
-
+import {history} from '../redux/configureStore'
 const Post = (props) => {
     return(
         <>
@@ -14,6 +14,9 @@ const Post = (props) => {
             <Grid is_flex justifyContent='space-between' width = '100%' >
                 <Text size = '120%' margin = '0% 5%'>{props.user_name}</Text>
                 <Text size = '120%' margin = '0% 5%'>{props.post_date}</Text>
+                {props.is_me && <Button padding="4px" width="auto" margin="4px" _onClick={()=>{
+                        history.push(`/write/${props.uid}`)
+                    }}>수정</Button> }
             </Grid>
             <Grid> 
                 <Grid width = "auto" is_flex justifyContent='center'>
@@ -39,7 +42,8 @@ Post.defaultProps = {
         contents:"간단한 소개글입니다.",
         img_url: "https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
         post_date:"2021-11-29 11:00:00",
-        comment_cnt: 10
+        comment_cnt: 10,
+        is_me:false,
 
 
 

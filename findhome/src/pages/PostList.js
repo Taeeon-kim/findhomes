@@ -22,16 +22,17 @@ const PostList = (props) => {
   }, []);
 
   return (
-    <Grid is_flex margin="0px" flexWrap="wrap">
+    <Grid is_flex margin="0px" flexWrap="wrap" >
       {postList.map((p, idx) => {
         return (
           <Grid
-            width="33%"
+            width="30%"
             is_flex
             key={p._id}
             _onClick={() => {
               history.push(`/detail/${p.uid}`);
             }}
+            margin="5px"
           >
             <Post {...p} />
           </Grid>
@@ -51,6 +52,9 @@ const PostList = (props) => {
     </Grid>
   );
 };
+
+
+
 
 const FloatBtn = styled.button`
   width: 100px;

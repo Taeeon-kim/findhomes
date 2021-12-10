@@ -6,42 +6,49 @@ import Grid from "../elements/Grid";
 import Button from "../elements/Button";
 import Input from "../elements/Input";
 import Text from "../elements/Text";
-import {actionCreators as postActions} from '../redux/modules/post';
+import { actionCreators as postActions } from "../redux/modules/post";
 import Post from "../components/Post";
 
 const PostList = (props) => {
   // const user_list = useSelector();
   const dispatch = useDispatch();
   const postList = useSelector((state) => state.post.list); // state는 리덕스 스토어의 전체 데이터
+  const is_login = useSelector((state) => state.user.is_login);
   // console.log(user_list);
-  console.log(postList)
+  console.log(postList);
 
-React.useEffect(() =>{
-        dispatch(postActions.getMainAPI());
-},[])
+  React.useEffect(() => {
+    dispatch(postActions.getMainAPI());
+  }, []);
 
   return (
-    
-      <Grid is_flex margin="0px" flexWrap="wrap" >
-        {postList.map((p, idx) => {
-          return (
-            <Grid  width = "33%"is_flex key={p._id}
-              _onClick={() => {
-                history.push(`/detail/${p.uid}`);
-              }}
-            >
-              <Post {...p} />
-            </Grid>
-          ); // map을 돌려줌으로 key값 필요
-          // {...p}에는 게시글의 모든 정보가 들어감
-        })}
+    <Grid is_flex margin="0px" flexWrap="wrap">
+      {postList.map((p, idx) => {
+        return (
+          <Grid
+            width="33%"
+            is_flex
+            key={p._id}
+            _onClick={() => {
+              history.push(`/detail/${p.uid}`);
+            }}
+          >
+            <Post {...p} />
+          </Grid>
+        ); // map을 돌려줌으로 key값 필요
+        // {...p}에는 게시글의 모든 정보가 들어감
+      })}
+
+      {is_login && (
         <FloatBtn
           onClick={() => {
             history.push("/write");
           }}
-        >+</FloatBtn>
-      </Grid>
-
+        >
+          +
+        </FloatBtn>
+      )}
+    </Grid>
   );
 };
 

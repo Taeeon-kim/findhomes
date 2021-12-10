@@ -14,7 +14,7 @@ const PostList = (props) => {
   const dispatch = useDispatch();
   const postList = useSelector((state) => state.post.list); // state는 리덕스 스토어의 전체 데이터
   // console.log(user_list);
-//   console.log(postList)
+  console.log(postList)
 
 React.useEffect(() =>{
         dispatch(postActions.getMainAPI());
@@ -25,12 +25,12 @@ React.useEffect(() =>{
       <Grid is_flex margin="0px" flexWrap="wrap" >
         {postList.map((p, idx) => {
           return (
-            <Grid  width = "33%"is_flex key={p.id}
+            <Grid  width = "33%"is_flex key={p._id}
               _onClick={() => {
-                history.push(`/detail/${p.id}`);
+                history.push(`/detail/${p.uid}`);
               }}
             >
-              <Post  {...p} />
+              <Post {...p} />
             </Grid>
           ); // map을 돌려줌으로 key값 필요
           // {...p}에는 게시글의 모든 정보가 들어감
@@ -41,7 +41,7 @@ React.useEffect(() =>{
           }}
         >+</FloatBtn>
       </Grid>
-  
+
   );
 };
 

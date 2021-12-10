@@ -13,7 +13,7 @@ import Image from "../elements/Image";
 const PostWrite = (props) => {
   const dispatch = useDispatch();
   const [title, setTitle] = React.useState("");
-  const [contents, setContents] = React.useState("");
+  const [content, setContents] = React.useState("");
 
   const texTtitle = (e) => {
     setTitle(e.target.value);
@@ -25,7 +25,7 @@ const PostWrite = (props) => {
   const addPost = () => {
     // let post = {
     //     title:title,
-    //     contents:content
+    //     content:content
     // }
     console.log("ddfc")
     dispatch(postActions.addPostDB(title, content));

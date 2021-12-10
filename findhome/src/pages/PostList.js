@@ -22,11 +22,11 @@ const PostList = (props) => {
   }, []);
 
   return (
-    <Grid is_flex margin="0px" flexWrap="wrap" >
+    <Grid is_flex margin="0% 3% 0% 2%" flexWrap="wrap">
       {postList.map((p, idx) => {
         return (
-          <Grid
-            width="30%"
+          <Grid is_btn
+            width="31%"
             is_flex
             key={p._id}
             _onClick={() => {
@@ -34,7 +34,7 @@ const PostList = (props) => {
             }}
             margin="5px"
           >
-            <Post {...p} />
+            <Post width= "0px"{...p} />
           </Grid>
         ); // map을 돌려줌으로 key값 필요
         // {...p}에는 게시글의 모든 정보가 들어감

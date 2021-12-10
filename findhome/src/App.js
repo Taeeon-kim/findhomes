@@ -12,10 +12,13 @@ import Header from './components/Header';
 import PostWrite from './pages/PostWrite';
 import PostDetail from './pages/PostDetail';
 
+import styled from 'styled-components';
+
 function App() {
   return (
     <React.Fragment>
       <Header></Header>
+      <Background>
       <ConnectedRouter history ={history} >
       <Route path="/" exact component={PostList} />
       <Route path="/sign-in" exact component={SignIn} />
@@ -23,10 +26,19 @@ function App() {
       <Route path="/write" exact component={PostWrite} />
       <Route path="/detail/:uid" exact component={PostDetail} />
       <Route path="/write/:uid" exact component={PostWrite} />
-      
       </ConnectedRouter>
+      </Background>
     </React.Fragment>
   );
 }
+
+const Background = styled.div`
+background-color:gray;
+position: relative  ;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+`
 
 export default App;

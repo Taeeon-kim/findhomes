@@ -30,7 +30,7 @@ const PostList = (props) => {
             is_flex
             key={p._id}
             _onClick={() => {
-              history.push(`/detail/${p.uid}`);
+              history.push(`/post/${p.uid}`);
             }}
             margin="20px"
           >

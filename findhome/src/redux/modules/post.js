@@ -58,7 +58,7 @@ const addPostDB = (title, content, area) => {
                 'content':_post.content,
                 'date':_post.post_date,
                 'area':_post.area,
-                'img_url': "https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
+                'img_url': 'https://picsum.photos/250/250'
             }, { headers: {
                 "authorization" : `Bearer ${TOKEN}`
               }, }).then(function (response){
@@ -136,13 +136,17 @@ const getMainAPI = () => {
 // withdraw
 const deleteDB = (_id) => {
     return function (dispatch, getState, {history}){
+        console.log(_id);
         const TOKEN = localStorage.getItem("token");
+        console.log(TOKEN)
+        // const a = `Bearer ${TOKEN}`;
+        // console.log(a.split(" "));
         instance.delete(`/api/posts/${_id}`,{_id},{ headers: {
             "authorization" : `Bearer ${TOKEN}`
-          }}).then((res) => {
+          }, }).then((res) => {
             console.log(res);
-            let users = res.data
-            dispatch(deletePost(users));
+            // let users = res.data
+            // dispatch(deletePost(users));
         }).catch(err => {
             console.log("withdraw : 에.러", err);
         });

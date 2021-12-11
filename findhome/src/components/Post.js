@@ -17,12 +17,14 @@ const Post = (props) => {
             <Grid is_flex justifyContent='space-between' width = '100%' >
                 <Text size = '120%' margin = '0% 5%'>{props.user_name}</Text>
                 <Text size = '120%' margin = '0% 5%'>{props.post_date}</Text>
-                {props.is_me && <Button padding="4px" width="auto" margin="4px" _onClick={()=>{
+                <Grid is_flex>
+                {props.is_me && <Button padding="4px" width="auto" margin="0px 10px 0px 250px" _onClick={()=>{
                         history.push(`/write/${props.uid}`)
                     }}>수정</Button> }
-                    {props.is_me && <Button padding="4px" width="auto" margin="4px" _onClick={()=>{
+                    {props.is_me && <Button padding="4px" width="auto" margin="0px" _onClick={()=>{
                        dispatch(postActions.deleteDB(props.uid))
                     }}>삭제</Button> }
+                    </Grid>
             </Grid>
             <Grid> 
                 <Grid width = "auto" is_flex justifyContent='center'>

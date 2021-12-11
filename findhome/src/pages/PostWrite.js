@@ -51,6 +51,11 @@ const PostWrite = (props) => {
    
     dispatch(postActions.addPostDB(title, content, area));
   };
+
+  const editPost = () =>{
+      window.alert('수정완료')
+      history.push('/');
+  }
   if (!is_login) {
     return (
       <Grid margin="100px 0px" padding="16px" center>
@@ -105,11 +110,15 @@ const PostWrite = (props) => {
           </Grid>
         </Grid>
         <Grid is_flex justifyContent="center">
-          <Button width="7%" margin="15px 5%" height="65px" _onClick={addPost}>
+         {is_edit?<Button width="7%" margin="15px 5%" height="65px" _onClick={editPost}>
+            <Text size="20px" color="white">
+            수정하기
+            </Text>
+          </Button>:<Button width="7%" margin="15px 5%" height="65px" _onClick={addPost}>
             <Text size="20px" color="white">
               게시글 등록
             </Text>
-          </Button>
+          </Button>} 
           <Button width="7%" margin="15px 5%" height="65px" _onClick={()=>history.push('/')}> 
             <Text size="20px" color="white">
               취소하기

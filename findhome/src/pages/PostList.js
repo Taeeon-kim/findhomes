@@ -59,7 +59,7 @@ const PostList = (props) => {
 const FloatBtn = styled.button`
   width: 100px;
   height: 100px;
-  background-color: lightblue;
+  background-color: #170b3b;
   color: white;
   box-sizing: border-box;
   font-size: 50px;

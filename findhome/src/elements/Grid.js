@@ -61,7 +61,7 @@ ${(props =>props.flexWrap?`flex-wrap:${props.flexWrap};`:"")}
 ${(props =>props.flexDirection?`flex-direction:${props.flexDirection};`:"")}
 ${(props =>props.border?`border:${props.border};`:"")}
 ${(props =>props.is_btn?`float: left; background-color:#ccc;
-border-radius:20px; box-shadow:3px 3px 3px black; transition-duration 0.3s; &:active{margin-left:15px; margin-top:15px; box-shadow:none;}` :"")}
+border-radius:20px; box-shadow:3px 3px 3px black; transition-duration 0.3s; &:hover{margin-left:15px; margin-top:15px; box-shadow:none;}` :"")}
 ${(props =>props.is_fix?` position: fixed; top: 0; width:100%;  z-index: 1;`:"")}
 ${(props =>props.flot_box?`border-radius:20px; box-shadow:3px 3px 3px black; `:"")}
 ${(props =>props.position?`display: relative;`:"")}

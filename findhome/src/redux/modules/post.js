@@ -8,11 +8,11 @@ import moment from "moment"
 // 액션 타입 지정
 const SET_POST = 'SET_POST'
 const ADD_POST = 'ADD_POST'
-
+const DELETE_POST = 'DELETE_POST'
 // 액션 생성 함수
 const setPost = createAction(SET_POST,(post_list) => ({post_list}))
 const addPost = createAction(ADD_POST,(post) => ({post}))
-
+const deletePost = createAction(DELETE_POST ,(post) => ({post}))
 // 기본값 지정
 const initialState = {
     list:[] 
@@ -52,13 +52,13 @@ const addPostDB = (title, content, area) => {
         const TOKEN = localStorage.getItem("token");
         console.log(TOKEN);
    
-            instance.post(`/api/posts`, {
+            instance.post(`/api/postsTest`, {
 
-                title:_post.title,
-                content:_post.content,
-                date:_post.post_date,
-                area:_post.area,
-                // img_url: "https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
+                'title':_post.title,
+                'content':_post.content,
+                'date':_post.post_date,
+                'area':_post.area,
+                'img_url': "https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/05/ef519975-80c8-40b6-b25a-47ab6270dc60.png",
             }, { headers: {
                 "authorization" : `Bearer ${TOKEN}`
               }, }).then(function (response){
@@ -133,6 +133,22 @@ const getMainAPI = () => {
             )}
 }
 
+// withdraw
+const deleteDB = (postId) => {
+    return function (dispatch, getState, {history}){
+        const TOKEN = localStorage.getItem("token");
+        instance.delete(`/api/posts/${postId}`,{postId},{ headers: {
+            "authorization" : `Bearer ${TOKEN}`
+          }}).then((res) => {
+            console.log(res);
+            let users = res.data
+            dispatch(deletePost(users));
+        }).catch(err => {
+            console.log("withdraw : 에.러", err);
+        });
+    };
+};
+
 
 
 // 리듀서
@@ -144,7 +160,11 @@ export default handleActions(
         [ADD_POST] : (state,action) => produce(state,(draft) => {
                 draft.list = action.payload.post
                 console.log(draft.list)
-        })
+        }),
+        [DELETE_POST]: (state, action) => produce(state, (draft) => {
+            // draft.study.joinNum -= 1;
+            // draft.join = action.payload.join
+        }),
 
     }
 ,initialState)
@@ -155,6 +175,7 @@ const actionCreators = {
     getMainAPI,
     addPostDB,
     addPost,
+    deleteDB,
 }
 
 export {actionCreators}

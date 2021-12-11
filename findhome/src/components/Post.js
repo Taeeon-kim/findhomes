@@ -7,7 +7,10 @@ import Input from '../elements/Input'
 import Text from '../elements/Text'
 import Image from '../elements/Image';
 import {history} from '../redux/configureStore'
+import {useDispatch} from 'react-redux';
+import { actionCreators as postActions } from '../redux/modules/user';
 const Post = (props) => {
+    const dispatch = useDispatch();
     return(
         <>
         <Grid margin = "2% 1%" >
@@ -17,6 +20,9 @@ const Post = (props) => {
                 {props.is_me && <Button padding="4px" width="auto" margin="4px" _onClick={()=>{
                         history.push(`/write/${props.uid}`)
                     }}>수정</Button> }
+                    {props.is_me && <Button padding="4px" width="auto" margin="4px" _onClick={()=>{
+                       dispatch(postActions.deleteDB(props.uid))
+                    }}>삭제</Button> }
             </Grid>
             <Grid> 
                 <Grid width = "auto" is_flex justifyContent='center'>

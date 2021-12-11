@@ -24,7 +24,7 @@ const Post = (props) => {
                        dispatch(postActions.deleteDB(props.uid))
                     }}>삭제</Button> }
             </Grid>
-            <Grid> 
+            <Grid margin='0px 0px 0px 20px'> 
                 <Grid width = "auto" is_flex justifyContent='center'>
                     <Image src = {props.img_url}/>
                 </Grid>

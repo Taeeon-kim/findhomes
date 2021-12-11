@@ -22,11 +22,11 @@ const PostList = (props) => {
   }, []);
 
   return (
-    <Grid bg = "lightblue" padding = '220px 0px 0px 0px' is_flex margin="0% 3% 0% 0%" flexWrap="wrap" >
+    <Grid bg = "lightblue" padding = '220px 0px 0px 200px' is_flex margin="0% 3% 0% 0px" flexWrap="wrap" >
       {postList.map((p, idx) => {
         return (
           <Grid is_btn
-            width="31%"
+            width="25%"
             is_flex
             key={p._id}
             _onClick={() => {

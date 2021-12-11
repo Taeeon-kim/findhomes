@@ -8,10 +8,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import { actionCreators as userActions } from '../redux/modules/user';
 import styled from 'styled-components';
 
+
+
 const Header = (props) => {
     const is_login =useSelector((store)=> store.user.is_login);
     const user = useSelector((store) => store.user.user)
-   
     const dispatch =useDispatch();
     if(is_login){
         return (

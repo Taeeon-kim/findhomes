@@ -4,8 +4,8 @@ import React from 'react';
 import styled from "styled-components"
 
 const Button = (props) => {
-    const {width,height,text, margin,children, _onClick, bg, color, border} = props
-    const styles = {width,height,text, margin, bg, color, border}
+    const {borderRadius,width,height,text, margin,children, _onClick, bg, color, border} = props
+    const styles = {borderRadius,width,height,text, margin, bg, color, border}
     return(
         <>
         <BtnBox  
@@ -26,7 +26,9 @@ Button.defaultProps = {
         height: "",
         bg : "#444444",
         color: "#FFFFFF",
-        border: false, 
+        border: false,
+        borderRadius: false,
+         
 
 }
 
@@ -39,6 +41,7 @@ ${(props) =>(props.height?`height:${props.height};`:"") }
 ${(props) =>(props.border?`border : 1px solid #000000;`:`border : none;`) }
 background-color: ${(props) => props.bg};
 color: ${(props) => props.color};
+${(props) =>(props.borderRadius?`border-radius:${props.borderRadius};`:"") }
 `
 export default Button
 

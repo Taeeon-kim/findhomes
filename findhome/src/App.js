@@ -14,9 +14,11 @@ import PostDetail from './pages/PostDetail';
 
 import styled from 'styled-components';
 
+
+
 function App() {
   return (
-    <React.Fragment>
+    <React.Fragment >
       <Header></Header>
       <Background>
       <ConnectedRouter history ={history} >
@@ -34,11 +36,12 @@ function App() {
 
 const Background = styled.div`
 background-color:gray;
-position: relative  ;
+position:absolute  ;
 top: 0;
 left: 0;
 width: 100%;
 height: 100%;
+font-family: 'Jua', sans-serif;
 `
 
 export default App;

@@ -39,7 +39,7 @@ const SignUp = (props) => {
 
   return (
     <React.Fragment>
-      <Grid>
+      <Grid flot_box bg = "white"border = "1px solid black" is_flex margin = "400px auto auto auto" justifyContent="center"  flexDirection = "column" width = "30%" padding = "50px 50px 100px 50px ">
         <Grid margin="50px auto" width="250px">
           <Text bold size="50px" margin="0px 0px 0px 40px">
             회원가입

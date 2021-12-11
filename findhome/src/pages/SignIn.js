@@ -17,13 +17,13 @@ const SignIn = (props) => {
     }
   return (
     <React.Fragment>
-      <Grid>
-        <Grid margin="50px auto" width="100px">
-          <Text bold size="50px" justifyContent margin="0px">
+      <Grid  flot_box bg = "white"border = "1px solid black" is_flex margin = "400px auto auto auto" justifyContent="center"  flexDirection = "column" width = "30%" padding = "50px 50px 100px 50px " >
+        <Grid  width="100px" >
+          <Text bold size="50px">
             Login
           </Text>
         </Grid>
-        <Grid is_flex margin="0px auto" width="230px">
+        <Grid is_flex  width="230px">
           <Text bold margin="15px 3px">
             ID: 
           </Text>

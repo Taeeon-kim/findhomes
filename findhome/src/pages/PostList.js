@@ -22,7 +22,7 @@ const PostList = (props) => {
   }, []);
 
   return (
-    <Grid is_flex margin="0% 3% 0% 2%" flexWrap="wrap">
+    <Grid bg = "lightblue" padding = '220px 0px 0px 0px' is_flex margin="0% 3% 0% 1%" flexWrap="wrap" >
       {postList.map((p, idx) => {
         return (
           <Grid is_btn
@@ -32,7 +32,7 @@ const PostList = (props) => {
             _onClick={() => {
               history.push(`/detail/${p.uid}`);
             }}
-            margin="5px"
+            margin="20px"
           >
             <Post width= "0px"{...p} />
           </Grid>

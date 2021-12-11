@@ -15,14 +15,14 @@ const Header = (props) => {
     const dispatch =useDispatch();
     if(is_login){
         return (
-            <Grid>
+            <Grid is_fix>
             <Container>
                  <Grid is_flex  justifyContent = "center" _onClick={()=> history.push("/")}>
                  <Text bold size= "45px" >보여줘 홈즈</Text>
-                 </Grid>
-            <Grid is_flex margin = 'auto 80px 0px auto' justifyContent = "flex-end" width = '30%'>
+
+            <Grid is_flex margin = 'auto 80px 0px auto' justifyContent = "flex-end" width = '20%'>
             <Text bold size= "15px" >{user.user_name}님 환영합니다</Text>
-                <Button height = '30px' margin = '0px 16px' text ='로그아웃' _onClick={()=> {dispatch(userActions.logoutAction())}}></Button> 
+                  <Button borderRadious="25px" height = '30px' margin = '0px 16px' text ='로그아웃' _onClick={()=> {dispatch(userActions.logoutAction())}}></Button> 
                 {/* <Button height = '30px' text ='회원가입' _onClick={()=> history.push("/sign-up")}></Button> */}
             </Grid>
             </Container>
@@ -31,14 +31,14 @@ const Header = (props) => {
     }
      return(
         
-        <Grid >
+        <Grid is_fix>
             <Container>
              <Grid is_flex  justifyContent = "center" _onClick={()=> history.push("/")}>
              <Text bold size= "45px" >보여줘 홈즈</Text>
              </Grid>
              <Grid is_flex margin = 'auto 80px 0px auto' justifyContent = "flex-end" width = '20%'>
-            <Button height = '30px' margin = '0px 16px' text ='로그인' _onClick={()=> history.push("/sign-in")}></Button> 
-            <Button height = '30px' text ='회원가입' _onClick={()=> history.push("/sign-up")}></Button>
+            <Button borderRadius="25px" height = '50px' width="100px" margin = '0px 16px 10px 16px' text ='로그인' _onClick={()=> history.push("/sign-in")}></Button> 
+            <Button borderRadius="25px" height = '50px'width="100px" margin = '0px 16px 10px 16px' text ='회원가입' _onClick={()=> history.push("/sign-up")}></Button>
         </Grid>
              </Container>
 
@@ -58,6 +58,7 @@ const Container = styled.div`
   background: -webkit-linear-gradient(to right, #70e1f5, #ffd194); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #70e1f5, #ffd194); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: cover;
+  font-family: 'Jua', sans-serif;
 `;
 
 

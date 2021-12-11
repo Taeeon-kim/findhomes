@@ -10,6 +10,8 @@ import styled from 'styled-components';
 
 const Header = (props) => {
     const is_login =useSelector((store)=> store.user.is_login);
+    const user = useSelector((store) => store.user.user)
+   
     const dispatch =useDispatch();
     if(is_login){
         return (
@@ -18,7 +20,8 @@ const Header = (props) => {
                  <Grid is_flex  justifyContent = "center" _onClick={()=> history.push("/")}>
                  <Text bold size= "45px" >보여줘 홈즈</Text>
                  </Grid>
-            <Grid is_flex margin = 'auto 80px 0px auto' justifyContent = "flex-end" width = '20%'>
+            <Grid is_flex margin = 'auto 80px 0px auto' justifyContent = "flex-end" width = '30%'>
+            <Text bold size= "15px" >{user.user_name}님 환영합니다</Text>
                 <Button height = '30px' margin = '0px 16px' text ='로그아웃' _onClick={()=> {dispatch(userActions.logoutAction())}}></Button> 
                 {/* <Button height = '30px' text ='회원가입' _onClick={()=> history.push("/sign-up")}></Button> */}
             </Grid>

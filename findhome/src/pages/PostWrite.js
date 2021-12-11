@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { history } from "../redux/configureStore";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/post";
 
 import Grid from "../elements/Grid";
@@ -12,11 +12,19 @@ import Image from "../elements/Image";
 
 const PostWrite = (props) => {
   const dispatch = useDispatch();
-  const [title, setTitle] = React.useState("");
-  const [content, setContents] = React.useState("");
-  const [area, setArea] = React.useState("");
 
-
+  const is_login = useSelector((state) => state.user.is_login);
+  const post_list = useSelector((state) => state.post.list);
+  console.log(post_list)
+  const post_id = props.match.params.uid;
+  const is_edit = post_id ? true : false;
+  console.log(post_id)
+  let _post = is_edit ? post_list.find((p) => p.uid === post_id) : null;
+  console.log(_post)
+  const [content, setContents] = React.useState(_post?_post.content:"");
+  const [title, setTitle] = React.useState(_post?_post.title:"");
+  const [area, setArea] = React.useState(_post?_post.area:"");
+  console.log(content, title, area)
   const textTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -27,16 +35,39 @@ const PostWrite = (props) => {
     setArea(e.target.value);
     console.log(e.target.value);
   };
+  
+//   React.useEffect(() => {
+//     if (is_edit && !_post) {
+//       console.log("포스트 정보가 없어요.");
+//       history.push("/");
+//     }
+
+//     if(is_edit){
+//         dispatch(imageActions.setPreview(_post.image_url));
+//            }
+//   }, []);
 
   const addPost = () => {
-    // let post = {
-    //     title:title,
-    //     content:content
-    // }
-    console.log("ddfc")
+   
     dispatch(postActions.addPostDB(title, content, area));
   };
-
+  if (!is_login) {
+    return (
+      <Grid margin="100px 0px" padding="16px" center>
+        <Text size="32px" bold>
+          잠시만요!
+        </Text>
+        <Text size="16px">로그인후에만 글 쓰기 가능</Text>
+        <Button
+          _onClick={() => {
+            history.replace("/sign-in");
+          }}
+        >
+          로그인 하러가기
+        </Button>
+      </Grid>
+    );
+  }
   return (
     <>
       <Grid is_flex flexDirection="column">
@@ -62,15 +93,15 @@ const PostWrite = (props) => {
             <Text bold size="25px">
               area
             </Text>
-            <Input _onChange={textArea} width="20%"></Input>
+            <Input value={area}  _onChange={textArea} width="20%"></Input>
             <Text bold size="25px">
               title
             </Text>
-            <TextArea onChange={textTitle} rows={2}></TextArea>
+            <Input value={title}  _onChange={textTitle} width="100%"></Input>
             <Text bold size="25px">
               content
             </Text>
-            <TextArea onChange={textContents} rows={5}></TextArea>
+            <Input multiLine value={content}  _onChange={textContents}></Input>
           </Grid>
         </Grid>
         <Grid is_flex justifyContent="center">

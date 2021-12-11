@@ -58,7 +58,6 @@ const loginAction = (id, password) => {
             dispatch(
               logIn({
                 user_name: users.nickname,
-                user_profile: "",
                 id: users.id,
                 uid: users.userId,
               })

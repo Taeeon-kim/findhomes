@@ -4,7 +4,18 @@ import Text from "./Text";
 import Grid from "./Grid";
 
 const Input = (props) => {
-    const {type, value, placeholder, label, _onChange, width} =props;   //InputSome 태그안에 {...props}라고 해도되는데 하다보면 props 에 InputSome에 들어가지않고 다른곳에서 쓰일수도있다. 따라서 필요없는걸 넣어줄필요없는데 다들어가게됨으로 그걸방하기위해 props안에있는걸 필요한거만 InputSome에 넣어줄것
+    const {type, value, placeholder, label, _onChange, width, multiLine} =props;   //InputSome 태그안에 {...props}라고 해도되는데 하다보면 props 에 InputSome에 들어가지않고 다른곳에서 쓰일수도있다. 따라서 필요없는걸 넣어줄필요없는데 다들어가게됨으로 그걸방하기위해 props안에있는걸 필요한거만 InputSome에 넣어줄것
+    
+    if(multiLine){
+        return (
+          <Grid>
+            {label&&<Text margin="0px">{label}</Text>}
+            <ElTextarea rows={5} value={value} placeholder={placeholder} onChange={_onChange}></ElTextarea>    {/* rows는 몇줄을넣을지 */}
+          </Grid>
+        )
+      }
+    
+    
     return(
         <React.Fragment>
             <Grid>
@@ -24,6 +35,13 @@ Input.defaultProps = {
     width : null,
     
 }
+
+const ElTextarea = styled.textarea`
+    border: 1px solid #212121;
+    width: 100%;
+    padding: 12px 4px;
+    box-sizing: border-box;
+`;
 
 const InputSome = styled.input`
   border: 1px solid #212121;

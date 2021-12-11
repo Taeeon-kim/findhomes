@@ -28,9 +28,9 @@ const PostDetail = (props) => {
     <React.Fragment>
       {post ? (
         is_login ? (
-         <Grid padding="300px 300px"> <Post position detail {...post} is_me={post.userId === user_info.user.uid}></Post></Grid>
+         <Grid  padding="300px 300px"> <Post  position detail {...post} is_me={post.userId === user_info.user.uid}></Post></Grid>
         ) : (
-            <Grid padding="300px 300px"> <Post position detail {...post}></Post></Grid>
+            <Grid   padding="300px 300px"> <Post   position detail {...post}></Post></Grid>
         )
       ) :null}
     </React.Fragment>

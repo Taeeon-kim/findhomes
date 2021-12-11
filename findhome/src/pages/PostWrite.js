@@ -70,11 +70,11 @@ const PostWrite = (props) => {
   }
   return (
     <>
-      <Grid is_flex flexDirection="column">
-        <Grid
+      <Grid  padding = "200px"is_flex flexDirection="column">
+        <Grid flot_box
           is_flex
           flexDirection="column"
-          border="3px solid black"
+          border="1px solid black"
           width="80%"
           margin="5% 70% 1% 70%"
           padding="1%"

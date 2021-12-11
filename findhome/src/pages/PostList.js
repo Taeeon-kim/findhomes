@@ -22,7 +22,7 @@ const PostList = (props) => {
   }, []);
 
   return (
-    <Grid bg = "lightblue" padding = '220px 0px 0px 0px' is_flex margin="0% 3% 0% 1%" flexWrap="wrap" >
+    <Grid bg = "lightblue" padding = '220px 0px 0px 0px' is_flex margin="0% 3% 0% 0%" flexWrap="wrap" >
       {postList.map((p, idx) => {
         return (
           <Grid is_btn

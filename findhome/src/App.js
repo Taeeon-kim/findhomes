@@ -20,7 +20,7 @@ function App() {
   return (
     <React.Fragment >
       <Header></Header>
-      <Background>
+  
       <ConnectedRouter history ={history} >
       <Route path="/" exact component={PostList} />
       <Route path="/sign-in" exact component={SignIn} />
@@ -29,7 +29,7 @@ function App() {
       <Route path="/detail/:uid" exact component={PostDetail} />
       <Route path="/write/:uid" exact component={PostWrite} />
       </ConnectedRouter>
-      </Background>
+     
     </React.Fragment>
   );
 }

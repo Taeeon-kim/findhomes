@@ -4,6 +4,7 @@ import Text from "../elements/Text";
 import post from "../redux/modules/post";
 import { useSelector } from "react-redux";
 import Button from "../elements/Button";
+import Grid from "../elements/Grid";
 const PostDetail = (props) => {
   const post_list = useSelector((store) => store.post.list); // 인자 store 는 임의로 정해줘도된다 configureStore.js 에 rootreducer 안에 post 의 key:value 값을 가져오는데 이때 전체 데이터 이름은 정해진게 없기때문이다.
   const user_info = useSelector((store) => store.user);
@@ -27,9 +28,9 @@ const PostDetail = (props) => {
     <React.Fragment>
       {post ? (
         is_login ? (
-          <Post detail {...post} is_me={post.userId === user_info.user.uid}></Post>
+         <Grid padding="300px 300px"> <Post position detail {...post} is_me={post.userId === user_info.user.uid}></Post></Grid>
         ) : (
-          <Post detail {...post}></Post>
+            <Grid padding="300px 300px"> <Post position detail {...post}></Post></Grid>
         )
       ) :null}
     </React.Fragment>

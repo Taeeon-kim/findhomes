@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const Grid = (props) => {
 
-    const {flot_box,is_fix,is_btn,border,flexDirection,flexWrap, justifyContent,is_flex, width, padding, margin, bg, children, _onClick} = props
+    const {flot_box,is_fix,is_btn,border,flexDirection,flexWrap, justifyContent,is_flex, width, padding, margin, bg, children, _onClick, position} = props
 
     const styles = {
         is_flex:is_flex,
@@ -18,6 +18,7 @@ const Grid = (props) => {
         is_btn:is_btn,
         is_fix:is_fix,
         flot_box:flot_box,
+        position:position,
     }
 
     return (
@@ -44,6 +45,7 @@ Grid.defaultProps = {
     is_btn:false,
     is_fix:false,
     flot_box: false,
+    position : false,
 }
 
 const GridBox = styled.div`
@@ -62,6 +64,7 @@ ${(props =>props.is_btn?`float: left; background-color:#ccc;
 border-radius:20px; box-shadow:3px 3px 3px black; transition-duration 0.3s; &:active{margin-left:15px; margin-top:15px; box-shadow:none;}` :"")}
 ${(props =>props.is_fix?` position: fixed; top: 0; width:100%;  z-index: 1;`:"")}
 ${(props =>props.flot_box?`border-radius:20px; box-shadow:3px 3px 3px black; `:"")}
+${(props =>props.position?`display: relative;`:"")}
 `
 
 

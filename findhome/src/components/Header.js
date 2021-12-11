@@ -19,7 +19,7 @@ const Header = (props) => {
             <Container>
                  <Grid is_flex  justifyContent = "center" _onClick={()=> history.push("/")}>
                  <Text bold size= "45px" >보여줘 홈즈</Text>
-
+                 </Grid>
             <Grid is_flex margin = 'auto 80px 0px auto' justifyContent = "flex-end" width = '20%'>
             <Text bold size= "15px" >{user.user_name}님 환영합니다</Text>
                   <Button borderRadious="25px" height = '30px' margin = '0px 16px' text ='로그아웃' _onClick={()=> {dispatch(userActions.logoutAction())}}></Button> 

@@ -8,7 +8,7 @@ import Text from '../elements/Text'
 import Image from '../elements/Image';
 import {history} from '../redux/configureStore'
 import {useDispatch} from 'react-redux';
-import { actionCreators as postActions } from '../redux/modules/user';
+import { actionCreators as postActions } from '../redux/modules/post';
 const Post = (props) => {
     const dispatch = useDispatch();
     return(

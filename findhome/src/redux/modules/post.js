@@ -134,14 +134,14 @@ const getMainAPI = () => {
 }
 
 // withdraw
-const deleteDB = (_id) => {
+const deleteDB = (postId) => {
     return function (dispatch, getState, {history}){
-        console.log(_id);
+        console.log(postId);
         const TOKEN = localStorage.getItem("token");
         console.log(TOKEN)
         // const a = `Bearer ${TOKEN}`;
         // console.log(a.split(" "));
-        instance.delete(`/api/posts/${_id}`,{_id},{ headers: {
+        instance.delete(`/api/posts/${postId}`,{postId},{ headers: {
             "authorization" : `Bearer ${TOKEN}`
           }, }).then((res) => {
             console.log(res);

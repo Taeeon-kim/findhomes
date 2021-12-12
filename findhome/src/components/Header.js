@@ -7,6 +7,7 @@ import { history } from '../redux/configureStore';
 import {useSelector, useDispatch} from 'react-redux';
 import { actionCreators as userActions } from '../redux/modules/user';
 import styled from 'styled-components';
+import {getCookie} from '../Cookie';
 
 
 
@@ -14,7 +15,13 @@ const Header = (props) => {
     const is_login =useSelector((store)=> store.user.is_login);
     const user = useSelector((store) => store.user.user)
     const dispatch =useDispatch();
-    if(is_login){
+    const cookie = getCookie("is_login")
+    const token = localStorage.getItem("token")
+    const nickname = localStorage.getItem("nickname")
+    
+    if(cookie==="success" && token){
+
+        
         return (
             <Grid is_fix>
             <Container>
@@ -22,7 +29,7 @@ const Header = (props) => {
                  <Text bold size= "45px" >보여줘 홈즈</Text>
                  </Grid>
             <Grid is_flex margin = 'auto 80px 0px auto' justifyContent = "flex-end" width = '20%'>
-            <Text bold size= "15px" >{user.user_name}님 환영합니다</Text>
+            <Text bold size= "15px" >{nickname}님 환영합니다</Text>
                   <Button borderRadious="25px" height = '30px' margin = '0px 16px' text ='로그아웃' _onClick={()=> {dispatch(userActions.logoutAction())}}></Button> 
                 {/* <Button height = '30px' text ='회원가입' _onClick={()=> history.push("/sign-up")}></Button> */}
             </Grid>

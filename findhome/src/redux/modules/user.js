@@ -53,8 +53,10 @@ const loginAction = (id, password) => {
             },
           })
           .then(function (response) {
-            console.log(response.data.users);
+            console.log(response.data.users.nickname);
+        
             const users = response.data.users;
+            localStorage.setItem("nickname", users.nickname);
             dispatch(
               logIn({
                 user_name: users.nickname,
@@ -76,9 +78,10 @@ const loginAction = (id, password) => {
 const logoutAction = () => {
   return function (dispatch, getState, { history }) {
     localStorage.removeItem("token");
+    localStorage.removeItem("nickname");
     dispatch(logOut());
     window.alert(`나중에 또 집보러오세요:)`);
-    history.replace("/");
+    document.location.href = '/'
   };
 };
 

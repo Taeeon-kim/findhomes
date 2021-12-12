@@ -18,8 +18,9 @@ const Header = (props) => {
     const cookie = getCookie("is_login")
     const token = localStorage.getItem("token") ? true : false;
     const nickname = localStorage.getItem("nickname")
+    const is_login = useSelector((store)=> store.user.is_login)
     
-    if(token){
+    if(is_login&&token){
 
         
         return (

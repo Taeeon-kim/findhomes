@@ -80,7 +80,7 @@ const logoutAction = () => {
     localStorage.removeItem("nickname");
     dispatch(logOut());
     window.alert(`나중에 또 집보러오세요:)`);
-    history.push('/')
+    history.replace('/')
   };
 };
 

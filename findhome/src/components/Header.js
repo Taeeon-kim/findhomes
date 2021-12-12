@@ -13,13 +13,13 @@ import {getCookie} from '../Cookie';
 
 const Header = (props) => {
     
-    // const user = useSelector((store) => store.user.user) // 리덕스 값으로 로그인 로그아웃 뷰를 담당하게되면 새로고침시 날라가기때문에 token, cookie를 세팅하면 안쓰게한다.
+    const user = useSelector((store) => store.user.user) // 리덕스 값으로 로그인 로그아웃 뷰를 담당하게되면 새로고침시 날라가기때문에 logincheck로 디스패치해서 리덕스에 데이터를 다시넣어준다.
     const dispatch =useDispatch();
     const cookie = getCookie("is_login")
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token") ? true : false;
     const nickname = localStorage.getItem("nickname")
     
-    if(cookie==="success" && token){
+    if(token){
 
         
         return (

@@ -34,7 +34,7 @@ const PostList = (props) => {
             }}
             margin="20px"
           >
-            <Post width= "0px"{...p} />
+            <Post width= "0px"{...p} key={p._id}/>
           </Grid>
         ); // map을 돌려줌으로 key값 필요
         // {...p}에는 게시글의 모든 정보가 들어감

@@ -45,7 +45,6 @@ const loginAction = (id, password) => {
 
         localStorage.setItem("token", response.data.token);
         const TOKEN = localStorage.getItem("token");
-        console.log(TOKEN);
         instance
           .get(`/api/users/me`, {
             headers: {
@@ -81,7 +80,7 @@ const logoutAction = () => {
     localStorage.removeItem("nickname");
     dispatch(logOut());
     window.alert(`나중에 또 집보러오세요:)`);
-    document.location.href = '/'
+    history.push('/')
   };
 };
 
@@ -102,6 +101,36 @@ const signupAction = (id, password, password_confirm, nickname) => {
 
  
     }
+}
+
+
+const loginCheckAction = () => {
+  return function (dispatch, getState, {history}){
+    const TOKEN = localStorage.getItem("token");
+    if(TOKEN){
+        instance
+          .get(`/api/users/me`, {
+            headers: {
+              authorization: `Bearer ${TOKEN}`,
+            },
+          })
+          .then(function (response) {
+            console.log(response.data.users.nickname);
+        
+            const users = response.data.users;
+            localStorage.setItem("nickname", users.nickname);
+            dispatch(
+              logIn({
+                user_name: users.nickname,
+                id: users.id,
+                uid: users.userId,
+              })
+            );
+            // window.alert(`${users.nickname}님 환영합니다.`);
+            // history.push("/");
+          });
+        } 
+  }
 }
 
 export default handleActions(
@@ -138,7 +167,8 @@ const actionCreators = {
   getUser,
   loginAction,
   logoutAction,
-  signupAction
+  signupAction,
+  loginCheckAction,
 };
 
 export { actionCreators };

@@ -13,10 +13,22 @@ import PostWrite from './pages/PostWrite';
 import PostDetail from './pages/PostDetail';
 
 import styled from 'styled-components';
-
+import { useDispatch } from 'react-redux';
+import {actionCreators as userActions} from './redux/modules/user'
 
 
 function App() {
+  const token = localStorage.getItem("token") ? true : false;
+  const dispatch = useDispatch();
+
+  React.useEffect(()=>{    //이부분이 있어야 로그아웃시에 자동으로 해더컴포넌트의 로그아웃 뷰가 바뀐다.
+    if(token){
+      dispatch(userActions.loginCheckAction());
+    }
+    
+  },[])
+
+
   return (
     <React.Fragment >
       <Header></Header>
